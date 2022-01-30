@@ -16,7 +16,7 @@ const UserSchema = new Schema({
 		required: true,
 		unique: true
 	},
-	realname: {
+	fullname: {
 		type: String,
 		required: true
 	},
@@ -28,7 +28,7 @@ const UserSchema = new Schema({
 		type: Number,
 		required: true
 	},
-	adress:{
+	address:{
 		type: String,
 		required: true
 	},
@@ -45,9 +45,10 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
-	role: {
+	role:{
 		type: String
 	}
+
 })
 
 module.exports = mongoose.model('users', UserSchema)

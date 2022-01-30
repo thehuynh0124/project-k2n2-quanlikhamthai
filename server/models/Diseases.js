@@ -16,4 +16,4 @@ const DiseaseSchema =  new Schema({
         required: true
     }
 })
-module.exports = mongoose.model('desease', DiseaseSchema)
+module.exports = mongoose.model('disease', DiseaseSchema)

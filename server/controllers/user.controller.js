@@ -30,7 +30,7 @@ exports.getAlluser = async (req, res) => {
 
 
 exports.register = async (req, res, next) => {
-    const { username, password, realname, email, phone, cccd, adress, ward, district, city } = req.body
+    const { username, password, email, fullname, phone, cccd, address, ward, district, city  } = req.body
 
 	// Simple validation
 	if (!username || !password || !email)
@@ -56,7 +56,7 @@ exports.register = async (req, res, next) => {
 
 		// All good
 		const hashedPassword = await argon2.hash(password)
-		const newUser = new User({ username, password: hashedPassword,realname, email, phone, cccd, adress, ward, district, city, role: "basicUser"})
+		const newUser = new User({ username, password: hashedPassword, email, fullname, phone, cccd, address, ward, district, city, role: "basicUser"})
 		await newUser.save()
 
 		// Return token
@@ -81,7 +81,7 @@ exports.login = async (req, res, next) => {
     if (!username || !password)
 		return res
 			.status(400)
-			.json({ success: false, message: 'Missing username and/or password' })
+			.json({ success: false, message: 'Chưa điền username và/hoặc mật khẩu' })
 
 	try {
 		// Check for existing user
@@ -89,14 +89,14 @@ exports.login = async (req, res, next) => {
 		if (!user)
 			return res
 				.status(400)
-				.json({ success: false, message: 'Incorrect username or password' })
+				.json({ success: false, message: 'tên người dùng hoặc mật khẩu không đúng' })
 
 		// Username found
 		const passwordValid = await argon2.verify(user.password, password)
 		if (!passwordValid)
 			return res
 				.status(400)
-				.json({ success: false, message: 'Incorrect username or password' })
+				.json({ success: false, message: 'tên người dùng hoặc mật khẩu không đúng' })
 
 		// All good
 		// Return token
