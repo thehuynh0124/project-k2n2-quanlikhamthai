@@ -5,26 +5,38 @@ import Auth from './views/Auth'
 import AuthContextProvider from './contexts/AuthContext';
 import Dashboard from './views/Dashboard';
 import ProtectedRoute from './components/routing/ProtectedRoute';
-import About from './views/About';
-import DiseaseContenxtProvider from './contexts/PostContext';
-import Diseases from './views/Diseases';
+import Diseases from './components/diseases/Diseases';
+import detailDisease from './components/diseases/detailDisease'
+import { DataProvider } from './contexts/GlobalState';
+import Vaccines from './components/vaccines/vaccines'
+import Dangkykham from './components/dangkykham/Formdangkykham';
+import DetailVaccine from './components/vaccines/detailVaccine'
+import Hospital from './components/hospital/hospital';
+import MyUser from './components/userFrofile/MyUser'
+import Doctor from './components/doctor/doctor';
 
 
 function App() {
   return (
     <AuthContextProvider>
-      <DiseaseContenxtProvider>
+      <DataProvider>
         <Router>
           <Switch>
             <Route exact path='/' component={Landing} />
             <Route exact path='/login' render={props => <Auth {...props} authRoute='login' />} />
             <Route exact path='/register' render={props => <Auth {...props} authRoute='register' />} />
-            <ProtectedRoute exact path='/dashboard' component = {Dashboard} />
-            <ProtectedRoute exact path='/about' component = {About} />
-            <Route exact path='/benh' component = {Diseases} />
+            <Route exact path='/dashboard' component = {Dashboard} />
+            <ProtectedRoute exact path='/diseases' component = {Diseases} />
+            <ProtectedRoute path="/detail/:id" exact component={detailDisease}/>
+            <ProtectedRoute exact path='/vaccines' component = {Vaccines} />
+            <ProtectedRoute exact path='/detailVaccine/:id' component = {DetailVaccine} />
+            <ProtectedRoute exact path='/dangkykham' component = {Dangkykham} />
+            <ProtectedRoute exact path='/hospital' component = {Hospital} />
+            <ProtectedRoute exact path='/user' component = {MyUser}/>
+            <ProtectedRoute exact path='/doctors' component = {Doctor}/>
           </Switch>
         </Router>
-      </DiseaseContenxtProvider>
+      </DataProvider>
     </AuthContextProvider>
   )
 }

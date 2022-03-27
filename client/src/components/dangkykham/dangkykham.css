@@ -1,0 +1,22 @@
+.dangkykham {
+    max-width: 100%;
+    overflow: hidden;
+    height: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    position: relative;
+
+}
+.dangkykham h1{
+    text-align: center;
+}
+.btndangky{
+    border-radius: 10px;
+    margin-left: 45%;
+    margin-top: 80px;
+}
+.selected-box{
+    position: absolute;
+    font-family: Arial;
+    font-size: x-large;
+}

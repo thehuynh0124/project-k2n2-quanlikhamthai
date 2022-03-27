@@ -2,8 +2,6 @@ import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import boyteLogo from '../../assets/Logo_BYT.svg'
 import logoutIcon from '../../assets/logout.svg'
-import hotline from '../../assets/phone-call-507.svg'
-import logokhamthai from '../../assets/logokhamthai.jpg'
 import Button from 'react-bootstrap/esm/Button'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../contexts/AuthContext'
@@ -12,13 +10,15 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 
 
 const NavbarMenu = () => {
-
     const {
 		authState: {
-			user: { username }
+			user: { fullname }
 		},
 		logoutUser
+
 	} = useContext(AuthContext)
+    console.log(AuthContext)
+
 
 	const logout = () => logoutUser()
 
@@ -50,18 +50,26 @@ const NavbarMenu = () => {
 
                     <Nav.Link 
                         className='font-weight-bolder text-white' 
-                        to='/datlichkham'  
+                        to='/dangkykham'  
                         as={Link}
                     >
-                        Đặt lịch khám
+                        Đăng ký khám
+                    </Nav.Link>
+
+                    <Nav.Link 
+                        className='font-weight-bolder text-white' 
+                        to='/dangkytiemchung'  
+                        as={Link}
+                    >
+                    Đăng ký tiêm chủng
                     </Nav.Link>
 
 
-                    <NavDropdown title='Tra cứu' Tra cứu  id="navbarScrollingDropdown">
+                    <NavDropdown title='Tra cứu' Tracứu  id="navbarScrollingDropdown">
                         <NavDropdown.Item  href="#action3">
                             <Nav.Link 
                                 className='font-weight-bolder text-black' 
-                                to='/benh'
+                                to='/diseases'
                                 as={Link}
                             >
                                Danh sách Bệnh
@@ -71,22 +79,46 @@ const NavbarMenu = () => {
                         <NavDropdown.Item href="#action4">
                             <Nav.Link 
                                 className='font-weight-bolder text-black' 
-                                to='/vaccine'  
+                                to='/vaccines'  
                                 as={Link}
                             >
                                Danh sách Vaccine
                             </Nav.Link>
                         </NavDropdown.Item>
-                        <NavDropdown.Item href="#action4">
+                        
+                        <NavDropdown.Item href="#action5">
                             <Nav.Link 
                                 className='font-weight-bolder text-black' 
-                                to='/vaccine'  
+                                to='/doctors'  
+                                as={Link}
+                            >
+                               Danh sách bác sĩ
+                            </Nav.Link>
+                        </NavDropdown.Item>
+                        
+                        
+                        <NavDropdown.Item href="#action6">
+                            <Nav.Link 
+                                className='font-weight-bolder text-black' 
+                                to='/hospital'  
                                 as={Link}
                             >
                                Danh sách cơ sở y tế
                             </Nav.Link>
                         </NavDropdown.Item>
+
+
+                        <NavDropdown.Item href="#action7">
+                            <Nav.Link 
+                                className='font-weight-bolder text-black' 
+                                to='/hospital'  
+                                as={Link}
+                            >
+                               Lịch hẹn khám
+                            </Nav.Link>
+                        </NavDropdown.Item>
                     </NavDropdown>
+                    
 
                     <Nav.Link 
                         className='font-weight-bolder text-white' 
@@ -96,17 +128,6 @@ const NavbarMenu = () => {
                         Hồ sơ cá nhân
                     </Nav.Link>
 
-
-                    <Nav.Link 
-                        className='font-weight-bolder text-white' 
-                        to='/about'  
-                        as={Link}
-                    >
-                    About
-                    </Nav.Link>
-
-                    
-
                 </Nav>
 
                 
@@ -114,7 +135,7 @@ const NavbarMenu = () => {
 
                 <Nav className="mr-sm-2">
                         <Nav.Link className='font-weight-bolder text-white' disabled>
-                            Wellcome {username}
+                            Wellcome {fullname}
                         </Nav.Link>
 
                         <Button 
@@ -132,48 +153,6 @@ const NavbarMenu = () => {
                             Logout
                         </Button>
                     </Nav>
-
-
-                    <Navbar fixed="bottom" bg='primary' variant='dark' className='shadow' expand='sm' >
-                        <Navbar.Brand className='font-weight-bolder text-white'>
-                            <h6> Bản quyền thuộc Bộ Y tế Việt Nam</h6>
-                            <img 
-                                src={boyteLogo} 
-                                alt="boyteLogo" 
-                                width='48' 
-                                height='48' 
-                                className = 'mr-4'
-                            />
-                            <img 
-                                src={logokhamthai} 
-                                alt="boyteLogo" 
-                                width='48' 
-                                height='48' 
-                                className = 'mr-4'
-                            />
-                            
-                            
-                        </Navbar.Brand>
-
-                        <Navbar.Brand>
-                            <img
-                                src ={hotline}
-                                alt = "hotline"
-                                width='32'
-                                height='32'
-                                className = 'mr -4'
-                            
-                            />
-                            Hotline: 088547779
-                        </Navbar.Brand>
-
-                        <Navbar fixed="bottom" bg='primary' variant='dark' className='shadow' expand='sm' >
-                            
-                        </Navbar>
-                    </Navbar>
-                    
-
-
         </Navbar>
 
 

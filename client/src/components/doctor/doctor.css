@@ -1,0 +1,49 @@
+
+#hospital {
+	font-family: Arial, Helvetica, sans-serif;
+  font-size:medium;
+	border-collapse: collapse;
+	width: 94%;
+  padding: 30px;
+  margin: 10px 0;
+  margin-left: 3%;
+  }
+  
+  #hospital td, #customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+
+  }
+  
+  #hospital tr:nth-child(even){background-color: #f2f2f2;  overflow: hidden;
+  }
+  
+  #hospital tr:hover {background-color: #ddd;
+  }
+  
+  #hospital th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: rgb(5, 131, 47);
+	color: white;
+  }
+
+.description{
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.action{
+  max-width: 30px;
+}
+.btnUpdate{
+    background-color: aqua;
+    margin: 10px;
+}
+.btnDelete{
+    background-color: red;
+    margin: 10px;
+}

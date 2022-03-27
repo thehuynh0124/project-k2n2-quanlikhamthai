@@ -6,10 +6,16 @@
 
 .home {
 	position: relative;
-	background: url('./assets/sitehome.png');
+	background: url('./assets/healthcare.jpg')no-repeat center center/cover;;
 	height: 800px;
 }
-
+.home h1{
+	margin-left: 20px;
+}
+.contact{
+	margin-top: 28%;
+	margin-left: 20px;
+}
 
 .dark-overlay {
 	background-color: rgba(0, 0, 0, 0.5);
@@ -120,3 +126,52 @@ button.post-button.btn:active {
 .post-title {
 	margin-bottom: 0.5rem;
 }
+#customers {
+	font-family: Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+  }
+  
+  #customers td, #customers th {
+	border: 1px solid #ddd;
+	padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #04AA6D;
+	color: white;
+  }
+
+  /* ------------- Diseases -------------- */
+
+@import url("./components/diseases/diseases.css");
+
+/* ------------- vaccines -------------- */
+
+@import url("./components/vaccines/vaccine.css");
+
+
+/* ------------- hospital -------------- */
+
+@import url("./components/hospital/hospital.css");
+
+/* ------------- User -------------- */
+
+@import url("./components/userFrofile/MyUser.css");
+
+/* ------------- Doctor -------------- */
+
+@import url("./components/userFrofile/MyUser.css");
+
+
+
+/* ------------- dangkykham -------------- */
+
+@import url("./components/dangkykham/dangkykham.css");

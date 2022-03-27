@@ -13,14 +13,14 @@ const LoginForm = () => {
 
   //local state
   const [loginForm, setLoginForm] = useState({
-    username: '',
+    email: '',
     password: ''
   })
 
   const [alert, setAlert] = useState(null)
 
 
-  const {username, password} = loginForm
+  const {email, password} = loginForm
 
   const onChangeLoginForm = event =>
     setLoginForm({...loginForm, [event.target.name]: event.target.value})
@@ -49,9 +49,9 @@ const LoginForm = () => {
       <Form.Group className='my-2'>
         <Form.Control type = 'text'
           size = 'md' 
-          placeholder='Tên đăng nhập' 
-          name='username' 
-          required value={username} 
+          placeholder='Email' 
+          name='email' 
+          required value={email} 
           onChange={onChangeLoginForm}
         />
       </Form.Group>

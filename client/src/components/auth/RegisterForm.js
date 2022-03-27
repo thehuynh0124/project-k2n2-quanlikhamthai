@@ -67,10 +67,10 @@ const RegisterForm = () => {
       <Form.Control 
         type = 'text' 
         size = 'sm'
-        placeholder='Tên đăng nhập' 
-        name='username' 
+        placeholder='email' 
+        name='email' 
         required 
-        value={username} 
+        value={email} 
         onChange={onChangeRegisterForm}
       />
     </Form.Group>
@@ -99,17 +99,6 @@ const RegisterForm = () => {
       />
     </Form.Group>
 
-    <Form.Group className='my-1'>
-      <Form.Control
-        type = 'email'
-        size = 'sm'
-        placeholder='Email' 
-        name='email' 
-        required 
-        value={email} 
-        onChange={onChangeRegisterForm}
-      />
-    </Form.Group>
 
     <Form.Group className='my-1'>
       <Form.Control 
