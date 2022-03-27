@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const verifyToken = require('../middleware/auth')
-const dangkykhamcontroller = require('../controllers/dangkykham.controller')
+const dangkykhamCtrl = require('../controllers/dangkykham.controller')
+const checkAdmin = require('../middleware/checkRole')
 
 
-router.post('/create', verifyToken, dangkykhamcontroller.Create)
-router.get('/getdangkykham', verifyToken, dangkykhamcontroller.getdangkykham)
+router.post('/dangkykham', verifyToken, dangkykhamCtrl.Create)
+router.get('/getdangkykham', verifyToken, dangkykhamCtrl.getdangkykham)
+router.put('/confirmSchedule/:id', verifyToken, checkAdmin, dangkykhamCtrl.confirmSchedule)
 module.exports = router

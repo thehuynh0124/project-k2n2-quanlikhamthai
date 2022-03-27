@@ -1,13 +1,14 @@
 const express = require('express')
 const router = express.Router()
-const argon2 = require('argon2')
-const jwt = require('jsonwebtoken')
 const verifyToken = require('../middleware/auth')
-const diseasecontroller = require('../controllers/disease.controller')
+const DiseasesCtrl = require('../controllers/diseasesCtrl')
+const CheckAdmin = require('../middleware/checkRole')
 
 
-router.get('/getdiseases', diseasecontroller.getdiseases)
-router.post('/create', verifyToken, diseasecontroller.Create)
-router.put('/edit/:id', verifyToken, diseasecontroller.editdiseases)
-router.delete('/delete/:id', verifyToken, diseasecontroller.deletediseases)
+router.route('/diseases')
+    .get( DiseasesCtrl.getDiseases)
+    .post(verifyToken, CheckAdmin, DiseasesCtrl.createDisease )
+router.route('/diseases/:id')
+    .put( verifyToken, CheckAdmin, DiseasesCtrl.updateDiseases)
+    .delete( verifyToken, CheckAdmin, DiseasesCtrl.deleteDiseases)
 module.exports = router

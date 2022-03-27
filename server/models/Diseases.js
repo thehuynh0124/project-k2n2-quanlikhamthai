@@ -1,19 +1,25 @@
 const mongoose = require('mongoose')
-const Schema = mongoose.Schema
+const {Schema} = mongoose
 
-const DiseaseSchema =  new Schema({
-    diseasename: {
+const diseaseSchema = new mongoose.Schema({
+    disease_id:{
+        type: String,
+        unique: true,
+        trim: true,
+        required: true
+    },
+    diseaseName:{
+        type: String,
+        trim: true,
+        required: true
+    },
+    description:{
         type: String,
         required: true
     },
-
-    note: {
-        type: String,
-        required: false
-    },
-    category:{
-        type: String,
-        required: true
-    }
+    category: [{type: Schema.Types.ObjectId, ref: "Category"}]
+    
+}, {
+    timestamps: true //important
 })
-module.exports = mongoose.model('disease', DiseaseSchema)
+module.exports = mongoose.model('Diseases', diseaseSchema)

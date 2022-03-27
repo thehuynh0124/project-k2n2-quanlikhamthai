@@ -1,26 +1,29 @@
 const express = require('express')
-const argon2 = require('argon2')
 const hospital = require('../models/hospital')
 
 
 exports.Create = async (req,res)=>{
-    const {hospitalnames, address, SDT} = req.body
+    const {hospitalnames, address, ward, district, city, phone, link} = req.body
 
 	if(!hospitalnames)
 		return res
 			.status(400)
 			
-	/*const hospitalNames = await hospital.findOne({ hospitalnames })
+	const hospitalNames = await hospital.findOne({hospitalnames})
 	if(hospitalNames)
 		return res
 			.status(400)
-			.json({success: false, message: "Hospital already exists"})*/
+			.json({success: false, message: "Hospital already exists"})
 
 	try {
 		const newHospital = new hospital({
 			hospitalnames,
             address,
-			SDT,
+			ward,
+			district,
+			city,
+			phone,
+			link
 		})
 		await newHospital.save()
 
@@ -43,16 +46,14 @@ exports.gethospital = async (req,res)=>{
 exports.edithospital = async (req, res) =>{
 	const { hospitalnames,address, SDT } = req.body
 
-	if (!hospitalnames)
-	return res
-			.status(400)
-			.json({ success: false, message: 'Hospital is required' })
-
 	try {
 		let updatedHospital = {
 			hospitalnames,
 			address,
-			SDT
+			ward,
+			district,
+			city,
+			phone
 		}
 
 		const hospitalUpdateCondition = { _id: req.params.id}
@@ -62,14 +63,12 @@ exports.edithospital = async (req, res) =>{
 			updatedHospital,
 			{ new: true }
 		)
-
 		
 		if (!updatedHospital)
 			return res.status(401).json({
 				success: false,
 				message: ' the hospital could not update'
 			})
-
 		res.json({
 			success: true,
 			message: 'Excellent progress!',
@@ -86,7 +85,7 @@ exports.deletehospital = async (req, res) =>{
 		const hospitalDeleteCondition = { _id: req.params.id}
 		const deletedHospital = await hospital.findOneAndDelete(hospitalDeleteCondition)
 
-		// User not authorised or post not found
+		// User not authorised found
 		if (!deletedHospital)
 			return res.status(401).json({
 				success: false,

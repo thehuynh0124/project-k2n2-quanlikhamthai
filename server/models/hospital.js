@@ -10,9 +10,24 @@ const HospitalSchema =  new Schema({
         type: String,
         required: true
     },
-    SDT: {
+    ward:{
         type: String,
         required: true
+    },
+    district:{
+        type: String,
+        required: true
+    },
+    city:{
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    link:{
+        type: String
     }
 })
 module.exports = mongoose.model('hospital', HospitalSchema)

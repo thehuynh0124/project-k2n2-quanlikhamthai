@@ -2,7 +2,12 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-	username: {
+	fullname: {
+		type: String,
+		required: true,
+		trim: true
+	},
+	email:{
 		type: String,
 		required: true,
 		unique: true
@@ -11,15 +16,7 @@ const UserSchema = new Schema({
 		type: String,
 		required: true
 	},
-	email:{
-		type: String,
-		required: true,
-		unique: true
-	},
-	fullname: {
-		type: String,
-		required: true
-	},
+	
 	phone:{
 		type: Number,
 		required: true
@@ -46,9 +43,13 @@ const UserSchema = new Schema({
 		required: true
 	},
 	role:{
+		/*type: Schema.Types.ObjectId, ref: 'role'*/
 		type: String
 	}
 
+},
+{
+    timestamps: true
 })
 
 module.exports = mongoose.model('users', UserSchema)
